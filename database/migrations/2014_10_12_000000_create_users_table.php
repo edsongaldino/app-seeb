@@ -15,8 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->integer('perfil_id')->unsigned();
-            $table->foreign('perfil_id')->references('id')->on('perfis');
+            $table->foreignId('perfil_id')->constrained('perfis');
             $table->string('nome');
             $table->string('telefone', 20);
             $table->date('data_nascimento');
