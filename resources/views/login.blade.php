@@ -5,12 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Twitter -->
-    <meta name="twitter:site" content="@themepixels">
-    <meta name="twitter:creator" content="@themepixels">
+    <meta name="twitter:site" content="@datapix">
+    <meta name="twitter:creator" content="@datapix">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Bracket">
-    <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="twitter:title" content="SG-PJA - Lar Maria de Lourdes">
+    <meta name="twitter:description" content="Sistema de Gerenciamento do Programa Jovem Aprendiz - Lar Maria de Lourdes">
     <meta name="twitter:image" content="http://themepixels.me/bracket/img/bracket-social.png">
 
     <!-- Facebook -->
@@ -25,43 +24,50 @@
     <meta property="og:image:height" content="600">
 
     <!-- Meta -->
-    <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="description" content="Sistema de Gerenciamento do Programa Jovem Aprendiz - Lar Maria de Lourdes">
     <meta name="author" content="ThemePixels">
 
-    <title>Sistema SEEB</title>
+    <title>SG-PJA - Lar Maria de Lourdes</title>
 
     <!-- vendor css -->
-    <link href="assets/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="assets/lib/Ionicons/css/ionicons.css" rel="stylesheet">
+    <link href="{{ asset('/assets/lib/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/lib/Ionicons/css/ionicons.css') }}" rel="stylesheet">
 
     <!-- Bracket CSS -->
-    <link rel="stylesheet" href="assets/css/bracket.css">
+    <link rel="stylesheet" href="{{ asset('/assets/css/bracket.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/custom.css') }}">
+
+    <link href="/assets/lib/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css" />
   </head>
 
   <body>
 
-    <div class="d-flex align-items-center justify-content-center bg-br-primary ht-100v">
-
+    <div class="d-flex align-items-center justify-content-center bg-login ht-100v">
+      <form name="FormLogin" method="POST" action="{{ route('login.do') }}">
+      @csrf
       <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 bg-white rounded shadow-base">
-        <div class="signin-logo tx-center tx-28 tx-bold tx-inverse"><span class="tx-normal">[</span> bracket <span class="tx-normal">]</span></div>
-        <div class="tx-center mg-b-60">The Admin Template For Perfectionist</div>
+        <div class="signin-logo tx-center tx-28 tx-bold tx-inverse"><img src="{{ asset('/assets/img/logo.png') }}" alt=""></div>
+        <div class="tx-center mg-b-60">Sistema de gestão do centro espírita</div>
 
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Enter your username">
+          <input type="text" class="form-control" placeholder="Seu e-mail" name="email">
         </div><!-- form-group -->
         <div class="form-group">
-          <input type="password" class="form-control" placeholder="Enter your password">
-          <a href="" class="tx-info tx-12 d-block mg-t-10">Forgot password?</a>
+          <input type="password" class="form-control" placeholder="Insira sua senha" name="password">
+          <a href="" class="tx-info tx-12 d-block mg-t-10">Esqueceu sua senha?</a>
         </div><!-- form-group -->
-        <button type="submit" class="btn btn-info btn-block">Sign In</button>
-
-        <div class="mg-t-60 tx-center">Not yet a member? <a href="" class="tx-info">Sign Up</a></div>
+        <button type="submit" class="btn btn-info btn-block">ENTRAR</button>
       </div><!-- login-wrapper -->
+      </form>
     </div><!-- d-flex -->
 
-    <script src="assets/lib/jquery/jquery.js"></script>
-    <script src="assets/lib/popper.js/popper.js"></script>
-    <script src="assets/lib/bootstrap/bootstrap.js"></script>
+    <script src="{{ asset('/assets/lib/jquery/jquery.js') }}"></script>
+    <script src="{{ asset('/assets/lib/popper.js/popper.js') }}"></script>
+    <script src="{{ asset('/assets/lib/bootstrap/bootstrap.js') }}"></script>
 
+    <script type="text/javascript" src="/assets/lib/sweetalert/dist/sweetalert.min.js" ></script>
+    <script src="/vendor/sweetalert/sweetalert.all.js"></script>
+
+    @include('sweetalert::alert')
   </body>
 </html>

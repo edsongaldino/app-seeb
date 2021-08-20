@@ -16,8 +16,9 @@ class CreatePessoaTable extends Migration
         Schema::create('pessoa', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('telefone');
-            $table->string('CPF', 11)->uniqid();
+            $table->string('telefone', 20);
+            $table->date('data_nascimento');
+            $table->string('cpf', 11)->nullable();
             $table->string('email')->nullable();
             $table->timestamps();
         });

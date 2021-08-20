@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Perfil;
+use App\User;
 use Illuminate\Http\Request;
+use App\Helpers\Helper;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -13,7 +18,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $usuarios = User::all();
+        return view('usuarios.index', compact('usuarios'));
     }
 
     /**
@@ -23,7 +29,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $perfis = Perfil::all();
+        return view('usuarios.adicionar', compact('perfis'));
     }
 
     /**
@@ -34,7 +41,20 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($this->verificaDuplicidade('email', $request->email)){
+            return redirect()->back()->with('warning', 'Este e-mail ja está cadastrado! Verifique.'); 
+        }
+
+        $User = new User();
+        $User->perfil_id = $request->perfil_id;
+        $User->nome = $request->nome;
+        $User->email = $request->email;
+        $User->data_nascimento = Helper::data_mysql($request->data_nascimento);
+        $User->telefone = Helper::limpa_campo($request->telefone);
+        $User->password = Hash::make($request->password);
+        $User->save();
+
+        return redirect()->route('usuarios')->with('success', 'Dados Cadastrados! Faça seu login.');
     }
 
     /**
@@ -56,7 +76,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $usuario = User::find($id);
+        $perfis = Perfil::all();
+        return view('usuarios.editar', compact('usuario', 'perfis'));
     }
 
     /**
@@ -66,9 +88,31 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $User = User::findOrFail($request->id);
+
+        if($request->email <> $User->email){
+            if($this->verificaDuplicidade('email', $request->email)){
+                return redirect()->back()->with('warning', 'Você não pode alterar seu cadastro para este e-mail, pois ele já consta em nosso banco de dados! Verifique.'); 
+            }
+        }
+
+        $User->perfil_id = $request->perfil_id;
+        $User->nome = $request->nome;
+        $User->email = $request->email;
+        $User->data_nascimento = Helper::data_mysql($request->data_nascimento);
+        $User->telefone = Helper::limpa_campo($request->telefone);
+        
+        if($request->password){
+            if($request->password <> $request->password2){
+                return redirect()->back()->with('warning', 'As duas senhas precisam ser idênticas! Verifique.'); 
+            }
+            $User->password = Hash::make($request->password);
+        }
+        $User->save();
+
+        return redirect()->route('usuarios')->with('success', 'Dados atualizados!');
     }
 
     /**
@@ -77,8 +121,31 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $usuario = User::findOrFail($request->id);
+        if($usuario->delete()):
+            return true;
+        endif;
     }
+
+    public function getFoto($id)
+    {
+        $this->user = User::find($id);
+        $arquivo = Storage::get($this->user->foto); 
+        return $arquivo;
+    }
+
+
+    public function verificaDuplicidade($campo, $valor){
+
+        $User = User::where($campo, $valor)->first();
+
+        if(isset($User)){
+            return $User;
+        }else{
+            return false;
+        }
+    }
+
 }

@@ -37,10 +37,14 @@
     <link href="/assets/lib/jquery-switchbutton/jquery.switchButton.css" rel="stylesheet">
     <link href="/assets/lib/rickshaw/rickshaw.min.css" rel="stylesheet">
     <link href="/assets/lib/chartist/chartist.css" rel="stylesheet">
+    <link href="/assets/lib/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css" />
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="/assets/css/bracket.css">
     <link rel="stylesheet" href="/assets/css/custom.css">
+
+    <script src="/assets/lib/jquery/jquery.js"></script>
+    <script src="/assets/lib/jquery.maskedinput/jquery.maskedinput.js"></script>
   </head>
 
   <body>
@@ -50,13 +54,13 @@
     <div class="br-sideleft overflow-y-auto">
       <label class="sidebar-label pd-x-15 mg-t-20">Menu</label>
       <div class="br-sideleft-menu">
-        <a href="index.html" class="br-menu-link active">
+        <a href="{{ route('home') }}" class="br-menu-link active">
           <div class="br-menu-item">
             <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
             <span class="menu-item-label">Inicio</span>
           </div><!-- menu-item -->
         </a><!-- br-menu-link -->
-        <a href="mailbox.html" class="br-menu-link">
+        <a href="{{ route('usuarios') }}" class="br-menu-link">
           <div class="br-menu-item">
             <i class="menu-item-icon icon ion-ios-email-outline tx-24"></i>
             <span class="menu-item-label">Usuários</span>
@@ -101,7 +105,7 @@
             <div class="dropdown-menu dropdown-menu-header wd-200">
               <ul class="list-unstyled user-profile-nav">
                 <li><a href=""><i class="icon ion-ios-person"></i> Editar Perfil</a></li>
-                <li><a href=""><i class="icon ion-power"></i> Sair</a></li>
+                <li><a href="{{ route('logout') }}"><i class="icon ion-power"></i> Sair</a></li>
               </ul>
             </div><!-- dropdown-menu -->
           </div><!-- dropdown -->

@@ -12,7 +12,6 @@
 </div><!-- br-mainpanel -->
 <!-- ########## END: MAIN PANEL ########## -->
 
-<script src="/assets/lib/jquery/jquery.js"></script>
 <script src="/assets/lib/popper.js/popper.js"></script>
 <script src="/assets/lib/bootstrap/bootstrap.js"></script>
 <script src="/assets/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
@@ -25,10 +24,18 @@
 <script src="/assets/lib/d3/d3.js"></script>
 <script src="/assets/lib/rickshaw/rickshaw.min.js"></script>
 
+<script type="text/javascript" src="/assets/lib/sweetalert/dist/sweetalert.min.js" ></script>
 
 <script src="/assets/js/bracket.js"></script>
 <script src="/assets/js/ResizeSensor.js"></script>
 <script src="/assets/js/dashboard.js"></script>
+
+@include('sweetalert::alert')
+
+<script src="{{ asset('assets/js/confirmacoes.js') }}"></script>
+<script src="{{ asset('assets/js/busca.js') }}"></script>
+<script src="{{ asset('assets/js/cep.js') }}"></script>
+<script src="{{ asset('assets/js/mascaras.js') }}"></script>
 <script>
   $(function(){
     'use strict'
@@ -57,5 +64,6 @@
     }
   });
 </script>
+
 </body>
 </html>

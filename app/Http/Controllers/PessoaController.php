@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Pessoa;
+use App\TipoPessoa;
 use Illuminate\Http\Request;
+use App\Helpers\Helper;
 
 class PessoaController extends Controller
 {
@@ -25,7 +27,8 @@ class PessoaController extends Controller
      */
     public function create()
     {
-        return view('assistidos.adicionar');
+        $tipos_pessoa = TipoPessoa::all();
+        return view('assistidos.adicionar', compact('tipos_pessoa'));
     }
 
     /**
@@ -36,7 +39,17 @@ class PessoaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $Pessoa = new Pessoa();
+        $Pessoa->tipo_pessoa_id = $request->tipo_pessoa_id;
+        $Pessoa->nome = $request->nome;
+        $Pessoa->email = $request->email;
+        $Pessoa->data_nascimento = Helper::data_mysql($request->data_nascimento);
+        $Pessoa->telefone = Helper::limpa_campo($request->telefone);
+        $Pessoa->cpf = Helper::limpa_campo($request->cpf);
+        $Pessoa->save();
+
+        return redirect()->route('assistidos')->with('success', 'Dados Cadastrados!');
     }
 
     /**
@@ -56,9 +69,11 @@ class PessoaController extends Controller
      * @param  \App\Pessoa  $pessoa
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pessoa $pessoa)
+    public function edit($id)
     {
-        //
+        $assistido = Pessoa::find($id);
+        $tipos_pessoa = TipoPessoa::all();
+        return view('assistidos.editar', compact('assistido', 'tipos_pessoa'));
     }
 
     /**
@@ -68,9 +83,19 @@ class PessoaController extends Controller
      * @param  \App\Pessoa  $pessoa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pessoa $pessoa)
+    public function update(Request $request)
     {
-        //
+        $Pessoa = Pessoa::findOrFail($request->id);
+
+        $Pessoa->tipo_pessoa_id = $request->tipo_pessoa_id;
+        $Pessoa->nome = $request->nome;
+        $Pessoa->email = $request->email;
+        $Pessoa->data_nascimento = Helper::data_mysql($request->data_nascimento);
+        $Pessoa->telefone = Helper::limpa_campo($request->telefone);
+        $Pessoa->cpf = Helper::limpa_campo($request->cpf);
+        $Pessoa->save();
+
+        return redirect()->route('assistidos')->with('success', 'Dados atualizados!');
     }
 
     /**
@@ -79,8 +104,11 @@ class PessoaController extends Controller
      * @param  \App\Pessoa  $pessoa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pessoa $pessoa)
+    public function destroy(Request $request)
     {
-        //
+        $pessoa = Pessoa::findOrFail($request->id);
+        if($pessoa->delete()):
+            return true;
+        endif;
     }
 }
