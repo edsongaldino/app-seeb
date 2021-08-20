@@ -8,26 +8,26 @@
     <meta name="twitter:site" content="@datapix">
     <meta name="twitter:creator" content="@datapix">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="SG-PJA - Lar Maria de Lourdes">
-    <meta name="twitter:description" content="Sistema de Gerenciamento do Programa Jovem Aprendiz - Lar Maria de Lourdes">
-    <meta name="twitter:image" content="http://themepixels.me/bracket/img/bracket-social.png">
+    <meta name="twitter:title" content="SEEB - Sistema de gestão do centro espírita">
+    <meta name="twitter:description" content="Sistema de Gerenciamento interno">
+    <meta name="twitter:image" content="https://app.euripedesbarsanulfo.org.br/assets/img/img-site.jpg">
 
     <!-- Facebook -->
     <meta property="og:url" content="http://themepixels.me/bracket">
     <meta property="og:title" content="Bracket">
-    <meta property="og:description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta property="og:description" content="Sistema de Gerenciamento interno">
 
-    <meta property="og:image" content="http://themepixels.me/bracket/img/bracket-social.png">
-    <meta property="og:image:secure_url" content="http://themepixels.me/bracket/img/bracket-social.png">
+    <meta property="og:image" content="https://app.euripedesbarsanulfo.org.br/assets/img/img-site.jpg">
+    <meta property="og:image:secure_url" content="https://app.euripedesbarsanulfo.org.br/assets/img/img-site.jpg">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="600">
 
     <!-- Meta -->
-    <meta name="description" content="Sistema de Gerenciamento do Programa Jovem Aprendiz - Lar Maria de Lourdes">
+    <meta name="description" content="SEEB - Sistema de gestão do centro espírita">
     <meta name="author" content="ThemePixels">
 
-    <title>SG-PJA - Lar Maria de Lourdes</title>
+    <title>SEEB - Sistema de gestão do centro espírita</title>
 
     <!-- vendor css -->
     <link href="{{ asset('/assets/lib/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
