@@ -174,7 +174,7 @@ function EnviarFormAssistido() {
 
   if (data_nascimento == "") {
 
-      swal({title: "Ops", text: "A data de nascimento deve ser preenchido!", type: "error"});
+      swal({title: "Ops", text: "A data de nascimento deve ser preenchida!", type: "error"});
       FormAssistido.data_nascimento.focus();
       return false;
   }
