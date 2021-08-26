@@ -167,7 +167,7 @@ function EnviarFormAssistido() {
 
   if (nome == "") {
 
-      swal({title: "Ops", text: "O campo nome deve ser preenchido!", type: "error"});
+      swal({title: "Ops", text: "O campo nome deve ser preenchido!!!", type: "error"});
       FormAssistido.nome.focus();
       return false;
   }
