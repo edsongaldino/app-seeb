@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Estado;
 use Illuminate\Http\Request;
 
 class AppController extends Controller
@@ -12,5 +13,10 @@ class AppController extends Controller
         return view('home');
     }
 
-    
+    public function CadTrabalhador()
+    {
+        $estados = Estado::all();
+        return view('cadastro', compact('estados'));
+    }
+
 }

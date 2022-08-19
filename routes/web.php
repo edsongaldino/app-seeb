@@ -19,7 +19,10 @@ Route::get('/', function () {
 });
 
 Route::get('/login',function(){return view('login');})->name('login');
+Route::get('/cadastro-trabalhador', 'AppController@CadTrabalhador')->name('cadastro-trabalhador');
+Route::post('gravar-cadastro', 'AppController@gravarCadastro')->name('gravar-cadastro');
 Route::get('/home', 'AppController@index')->name('home')->middleware('auth');
+
 
 
 //Assistidos Rotas
