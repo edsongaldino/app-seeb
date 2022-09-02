@@ -43,6 +43,18 @@ button:focus {
   text-decoration: none;
   outline: none; }
 
+  .logo-seeb{
+    margin: auto !important;
+  }
+
+  .logo-seeb img{
+    height: 50px !important;
+  }
+
+  .navbar-cadastro {
+    background-color: #f0f0f0 !important;
+}
+
 a:focus,
 a:hover {
   text-decoration: none; }
@@ -3160,8 +3172,8 @@ p.form-message.success, p.form-message.error {
 /*===== FOOTER FIVE =====*/
 .footer-area {
   background-color: #f4f6f7;
-  padding-top: 90px;
-  padding-bottom: 120px; }
+  padding-top: 20px;
+  padding-bottom: 20px; }
   .footer-area .social li {
     display: inline-block;
     margin: 0 5px; }
@@ -3268,7 +3280,7 @@ a.area{
 }
 
 .formulario-cadastro {
-  padding: 220px 0 100px 0;
+  padding: 80px 0 100px 0;
 }
 
 .cad-menu{
@@ -3280,11 +3292,11 @@ a.area{
 }
 
 .navbar-area {
-  border-top: 20px solid #00778a !important;
+  border-top: 0px solid #00778a !important;
 }
 
 .footer-area.footer-dark {
-  background-color: #00353e !important;
+  background-color: #062342 !important;
 }
 
 .about-area {
@@ -3313,7 +3325,7 @@ p.cadastro{
 }
 
 .navbar-cadastro{
-  background-color: #2bdbdc !important;
+  background-color: #0f7ab1 !important;
 }
 
 .titulo-modulo{

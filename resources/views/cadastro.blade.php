@@ -5,7 +5,7 @@
     <meta charset="utf-8">
 
     <!--====== Title ======-->
-    <title>Programa Jovem Aprendiz - Lar Maria de Lourdes</title>
+    <title>Cadastro de Trabalhadores - SEEB</title>
 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -53,30 +53,10 @@
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg">
 
-                        <a class="navbar-brand" href="#">
+                        <a class="navbar-brand logo-seeb" href="#">
                             <img src="assets/img/logo2.png" alt="Logo">
                         </a>
 
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTwo" aria-controls="navbarTwo" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="toggler-icon"></span>
-                            <span class="toggler-icon"></span>
-                            <span class="toggler-icon"></span>
-                        </button>
-
-                        <div class="collapse navbar-collapse sub-menu-bar" id="navbarTwo">
-                            <ul class="navbar-nav m-auto">
-                                <li class="nav-item"><a class="page-scroll" href="#home">Home</a></li>
-                                <li class="nav-item"><a class="page-scroll" href="#about">Conheça a casa</a></li>
-                                <li class="nav-item"><a class="page-scroll" href="#portfolio">Onde estamos</a></li>
-                                <li class="nav-item"><a class="page-scroll" href="#contact">Contato</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="navbar-btn d-none d-sm-inline-block">
-                            <ul>
-                                <li><a class="solid" href="/"><< VOLTAR</a></li>
-                            </ul>
-                        </div>
                     </nav> <!-- navbar -->
                 </div>
             </div> <!-- row -->
@@ -128,6 +108,15 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-input mt-10">
+                                                <label>CPF</label>
+                                                <div class="input-items default">
+                                                    <input name="cpf" type="text" value="{{ $cadastro->cpf ?? '' }}" required>
+                                                    <i class="lni lni-more"></i>
+                                                </div>
+                                            </div> <!-- form input -->
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-input mt-10">
                                                 <label>Data de Nascimento</label>
                                                 <div class="input-items default">
                                                     <input type="date" name="data_nascimento" id="data_nascimento" placeholder="00/00/0000" value="{{ $cadastro->data_nascimento ?? '' }}" required>
@@ -146,18 +135,9 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-input mt-10">
-                                                <label>Telefone</label>
+                                                <label>Telefone (Whatsapp)</label>
                                                 <div class="input-items default">
                                                     <input type="text" name="telefone" class="telefone" placeholder="Telefone" value="{{ $cadastro->telefone ?? '' }}" required>
-                                                    <i class="lni lni-phone"></i>
-                                                </div>
-                                            </div> <!-- form input -->
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-input mt-10">
-                                                <label>Whatsapp</label>
-                                                <div class="input-items default">
-                                                    <input type="text" name="whatsapp" class="telefone"  placeholder="Whatsapp" value="{{ $cadastro->telefone ?? '' }}" required>
                                                     <i class="lni lni-phone"></i>
                                                 </div>
                                             </div> <!-- form input -->
@@ -254,7 +234,7 @@
                                                         <option value="Sim">Sim</option>
                                                         <option value="Não">Não</option>
                                                     </select>
-                                                    <i class="lni lni-map-marker"></i>
+                                                    <i class="lni lni-more"></i>
                                                 </div>
                                             </div> <!-- form input -->
                                         </div>
@@ -272,7 +252,7 @@
                                                         <option value="Vibração">Vibração</option>
                                                         <option value="Instituto">Instituto</option>
                                                     </select>
-                                                    <i class="lni lni-map-marker"></i>
+                                                    <i class="lni lni-more"></i>
                                                 </div>
                                             </div> <!-- form input -->
                                         </div>
@@ -290,7 +270,7 @@
                                                         <option value="Criança">Criança</option>
                                                         <option value="Jovem">Jovem</option>
                                                     </select>
-                                                    <i class="lni lni-map-marker"></i>
+                                                    <i class="lni lni-more"></i>
                                                 </div>
                                             </div> <!-- form input -->
                                         </div>
@@ -304,7 +284,7 @@
                                                         <option value="Sim">Sim</option>
                                                         <option value="Não">Não</option>
                                                     </select>
-                                                    <i class="lni lni-map-marker"></i>
+                                                    <i class="lni lni-more"></i>
                                                 </div>
                                             </div> <!-- form input -->
                                         </div>
@@ -318,7 +298,7 @@
                                                         <option value="Sim">Sim</option>
                                                         <option value="Não">Não</option>
                                                     </select>
-                                                    <i class="lni lni-map-marker"></i>
+                                                    <i class="lni lni-more"></i>
                                                 </div>
                                             </div> <!-- form input -->
                                         </div>
@@ -333,7 +313,7 @@
                                                         <option value="Campanha de Fraternidade Auta de Souza">Campanha de Fraternidade Auta de Souza</option>
                                                         <option value="Posto de Assistência">Posto de Assistência</option>
                                                     </select>
-                                                    <i class="lni lni-map-marker"></i>
+                                                    <i class="lni lni-more"></i>
                                                 </div>
                                             </div> <!-- form input -->
                                         </div>
@@ -343,7 +323,7 @@
                                                 <label>Em qual ano começou a frequentar a casa espírita?</label>
                                                 <div class="input-items default">
                                                     <input name="ano_inicio" id="ano_inicio" type="number" placeholder="" value="" maxlength="4" required>
-                                                    <i class="lni lni-map-marker"></i>
+                                                    <i class="lni lni-calendar"></i>
                                                 </div>
                                             </div> <!-- form input -->
                                         </div>
@@ -359,7 +339,7 @@
                                                         <option value="Indicação de Alguém">Indicação de Alguém</option>
                                                         <option value="Buscadores">Buscadores (Google, Bing) </option>
                                                     </select>
-                                                    <i class="lni lni-map-marker"></i>
+                                                    <i class="lni lni-more"></i>
                                                 </div>
                                             </div> <!-- form input -->
                                         </div>
@@ -376,7 +356,7 @@
                                                         <option value="Trabalho Assistencial">Trabalho Assistencial</option>
                                                         <option value="Mediunidade">Mediunidade</option>
                                                     </select>
-                                                    <i class="lni lni-map-marker"></i>
+                                                    <i class="lni lni-more"></i>
                                                 </div>
                                             </div> <!-- form input -->
                                         </div>
@@ -384,7 +364,7 @@
                                         <div class="titulo-modulo">4. CADASTRE SUA FOTO (SELFIE)</div>
                                         <div class="col-md-12">
                                             <div class="form-input light-rounded-buttons mt-30">
-                                                <input type="file" class="main-btn light-rounded-two" value="Foto Perfil">
+                                                <input type="file" name="foto_perfil" class="main-btn light-rounded-two" value="Foto Perfil">
                                             </div> <!-- form input -->
                                         </div>
 
@@ -412,35 +392,6 @@
     </section>
     @endif
 
-
-    <!--====== FOOTER PART START ======-->
-
-    <section class="footer-area footer-dark">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="footer-logo text-center">
-                        <a class="mt-30" href="index.php"><img src="assets/site/images/logo.png" alt="Logo"></a>
-                    </div> <!-- footer logo -->
-                    <ul class="social text-center mt-60">
-                        <li><a href="https://facebook.com/uideckHQ"><i class="lni lni-facebook-filled"></i></a></li>
-                        <li><a href="https://twitter.com/uideckHQ"><i class="lni lni-twitter-original"></i></a></li>
-                        <li><a href="https://instagram.com/uideckHQ"><i class="lni lni-instagram-original"></i></a></li>
-                        <li><a href="#"><i class="lni lni-linkedin-original"></i></a></li>
-                    </ul> <!-- social -->
-                    <div class="footer-support text-center">
-                        <span class="number">(66) 3419-1184</span>
-                        <span class="mail">jovemaprendiz@larmariadelourdes.org.br</span>
-                    </div>
-                    <div class="copyright text-center mt-35">
-                        <a class="mt-30" href="index.php"><img src="assets/site/images/logo-datapix.png" alt="Logo"></a>
-                    </div> <!--  copyright -->
-                </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </section>
-
-    <!--====== FOOTER PART ENDS ======-->
 
     <!--====== BACK TOP TOP PART START ======-->
 

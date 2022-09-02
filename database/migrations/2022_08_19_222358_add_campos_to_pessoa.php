@@ -14,7 +14,8 @@ class AddCamposToPessoa extends Migration
     public function up()
     {
         Schema::table('pessoa', function (Blueprint $table) {
-            //
+            $table->foreignId('endereco_id')->constrained('enderecos')->after('id');
+            $table->string('foto_perfil')->nullable();
         });
     }
 
@@ -26,7 +27,8 @@ class AddCamposToPessoa extends Migration
     public function down()
     {
         Schema::table('pessoa', function (Blueprint $table) {
-            //
+            $table->dropColumn('endereco_id');
+            $table->dropColumn('foto_perfil');
         });
     }
 }
