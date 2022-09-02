@@ -47,7 +47,26 @@ class PessoaController extends Controller
         $Pessoa->data_nascimento = Helper::data_mysql($request->data_nascimento);
         $Pessoa->telefone = Helper::limpa_campo($request->telefone);
         $Pessoa->cpf = Helper::limpa_campo($request->cpf);
+
+        if($request->hasFile('foto_perfil')){
+            // Get filename with the extension
+            $filenameWithExt = $request->file('foto_perfil')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('foto_perfil')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $fileNameBD = $request->file('foto_perfil')->storeAs('public/arquivos/foto', $fileNameToStore);
+    
+        } else {
+            $fileNameBD = $request->foto_old;
+        }
+        $Pessoa->foto_perfil = $fileNameBD;
         $Pessoa->save();
+
+        
 
         return redirect()->route('assistidos')->with('success', 'Dados Cadastrados!');
     }
@@ -93,6 +112,8 @@ class PessoaController extends Controller
         $Pessoa->data_nascimento = Helper::data_mysql($request->data_nascimento);
         $Pessoa->telefone = Helper::limpa_campo($request->telefone);
         $Pessoa->cpf = Helper::limpa_campo($request->cpf);
+
+
         $Pessoa->save();
 
         return redirect()->route('assistidos')->with('success', 'Dados atualizados!');
